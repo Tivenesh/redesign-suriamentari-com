@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 export function PortfolioGrid() {
   const [filter, setFilter] = useState("all")
@@ -92,27 +93,66 @@ export function PortfolioGrid() {
 
   const filteredProjects = filter === "all" ? projects : projects.filter((p) => p.category === filter)
 
+  // Animation variants for the hover effect
+  const overlayVariants = {
+    initial: { opacity: 0 },
+    hover: { opacity: 1 },
+  }
+
+  const imageVariants = {
+    initial: { scale: 1 },
+    hover: { scale: 1.05 },
+  }
+
+  const textOverlayVariants = {
+    initial: { y: "100%" },
+    hover: { y: "0%" },
+  }
+  
+  const staticTextVariants = {
+    initial: { opacity: 1 },
+    hover: { opacity: 0 },
+  }
+
   return (
     <section id="work" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className={`group cursor-pointer ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+              className={`cursor-pointer ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
+              initial="initial"
+              whileHover="hover"
+              animate="initial"
             >
               <div className="relative overflow-hidden bg-gray-900 aspect-square">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                <motion.div
+                  variants={imageVariants}
+                  transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }} // Using a custom ease
+                  className="w-full h-full"
+                >
+                  <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="absolute inset-0 bg-black/40"
+                  variants={overlayVariants}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Project Info Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 p-6 text-white"
+                  variants={textOverlayVariants}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
                   <span className="text-xs font-medium tracking-widest text-gray-300 uppercase mb-2 block">
                     {project.subtitle}
                   </span>
@@ -125,17 +165,21 @@ export function PortfolioGrid() {
                       </span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Static Project Info */}
-                <div className="absolute bottom-6 left-6 text-white group-hover:opacity-0 transition-opacity duration-300">
+                <motion.div 
+                  className="absolute bottom-6 left-6 text-white"
+                  variants={staticTextVariants}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
                   <span className="text-xs font-medium tracking-widest text-gray-300 uppercase mb-1 block">
                     {project.subtitle}
                   </span>
                   <h3 className="text-lg font-bold">{project.title}</h3>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

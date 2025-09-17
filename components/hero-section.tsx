@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -30,6 +31,31 @@ export function HeroSection() {
     }, 6000)
     return () => clearInterval(timer)
   }, [slides.length])
+  
+  // Animation container variants to stagger children's animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Time delay between each child animating in
+      },
+    },
+  }
+
+  // Animation for individual text elements to fade in and slide up
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  }
+
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -41,25 +67,36 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <div className="mb-8">
+      {/* Animated Content */}
+      <motion.div
+        key={currentSlide} // Re-trigger animation when slide changes
+        className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div className="mb-8" variants={itemVariants}>
           <span className="text-sm font-medium tracking-[0.3em] text-white/80 uppercase">
             {slides[currentSlide].subtitle}
           </span>
-        </div>
+        </motion.div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-[0.9] mb-12 text-balance">
-          {slides[currentSlide].title}
-        </h1>
-
-        <Button
-          variant="outline"
-          size="lg"
-          className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-500 px-8 py-4 text-sm tracking-wider"
+        <motion.h1
+          className="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-[0.9] mb-12 text-balance"
+          variants={itemVariants}
         >
-          {slides[currentSlide].cta}
-        </Button>
+          {slides[currentSlide].title}
+        </motion.h1>
+
+        <motion.div variants={itemVariants}>
+          <Button
+            variant="outline"
+            size="lg"
+            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-500 px-8 py-4 text-sm tracking-wider"
+          >
+            {slides[currentSlide].cta}
+          </Button>
+        </motion.div>
 
         {/* Slide Indicators */}
         <div className="flex justify-center space-x-3 mt-16">
@@ -73,7 +110,7 @@ export function HeroSection() {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">

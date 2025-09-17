@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { X } from "lucide-react" // Import the X icon for the close button
+import { motion } from "framer-motion" // Import for animations
 
 export function EnhancedNavigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -81,10 +83,11 @@ export function EnhancedNavigation() {
       </nav>
 
       {/* Full-Screen Overlay Menu */}
-      <div
-        className={`fixed inset-0 z-[60] transition-all duration-500 ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+      <motion.div
+        className={`fixed inset-0 z-[60]`}
+        initial={{ opacity: 0, visibility: 'hidden' }}
+        animate={{ opacity: isOpen ? 1 : 0, visibility: isOpen ? 'visible' : 'hidden' }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         {/* Background Video/Texture */}
         <div className="absolute inset-0 bg-black">
@@ -93,6 +96,15 @@ export function EnhancedNavigation() {
             <source src="/placeholder.mp4" type="video/mp4" />
           </video>
         </div>
+
+        {/* Close Button */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute top-6 left-6 text-white hover:text-gray-300 z-20"
+          aria-label="Close menu"
+        >
+          <X size={40} />
+        </button>
 
         {/* Menu Content */}
         <div className="relative z-10 flex h-full">
@@ -106,7 +118,8 @@ export function EnhancedNavigation() {
                   onClick={() => setIsOpen(false)}
                   onMouseEnter={() => setHoveredItem(item.name)}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className={`block text-6xl md:text-7xl font-light text-white hover:text-gray-300 transition-all duration-300 ${
+                  // Changed font-sans to font-serif
+                  className={`block text-6xl md:text-7xl font-serif font-light text-white hover:text-gray-300 transition-all duration-300 ${
                     isOpen ? `animate-fade-in-up` : ""
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -132,7 +145,7 @@ export function EnhancedNavigation() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   )
 }

@@ -139,37 +139,27 @@ export default function ContactPage() {
             <div>
               <h2 className="text-3xl font-serif font-light mb-8">Contact Information</h2>
 
-              <div className="space-y-8">
+              {/* The font-sans class was added here to apply Geist Sans to all children */}
+              <div className="space-y-8 font-sans">
                 <div>
                   <h3 className="text-lg font-light mb-2 text-white/80">Office Address</h3>
                   <p className="text-gray-300">
-                    123 Business District
+                    No. 12, Jalan TP 7/7,
                     <br />
-                    Kuala Lumpur, Malaysia
+                    Sime UEP Industrial Park,
                     <br />
-                    50450
+                    40400 Shah Alam, Selangor.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-light mb-2 text-white/80">Phone</h3>
-                  <p className="text-gray-300">+60 3-1234 5678</p>
+                  <p className="text-gray-300">+603-5192 8113</p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-light mb-2 text-white/80">Email</h3>
                   <p className="text-gray-300">info@suriamentari.com</p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-light mb-2 text-white/80">Business Hours</h3>
-                  <p className="text-gray-300">
-                    Monday - Friday: 8:00 AM - 6:00 PM
-                    <br />
-                    Saturday: 9:00 AM - 4:00 PM
-                    <br />
-                    Sunday: Closed
-                  </p>
                 </div>
               </div>
 

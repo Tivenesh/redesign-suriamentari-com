@@ -1,5 +1,8 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 export function FeaturedServicesSection() {
   const services = [
@@ -25,8 +28,27 @@ export function FeaturedServicesSection() {
     },
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  }
+
   return (
-    <section className="py-32 px-6 bg-gray-900/30">
+    <motion.section 
+      className="py-32 px-6 bg-gray-900/30"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-serif font-light mb-6">Featured Services</h2>
@@ -35,9 +57,15 @@ export function FeaturedServicesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {services.map((service, index) => (
-            <div key={index} className="group cursor-pointer">
+            <motion.div key={index} className="group cursor-pointer" variants={itemVariants}>
               <div className="relative overflow-hidden mb-6 aspect-square">
                 <img
                   src={service.image || "/placeholder.svg"}
@@ -50,9 +78,9 @@ export function FeaturedServicesSection() {
               <h3 className="text-xl font-light mb-3 group-hover:text-gray-300 transition-colors">{service.title}</h3>
 
               <p className="text-gray-400 text-sm leading-relaxed mb-4">{service.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="text-center mt-16">
           <Link href="/services">
@@ -66,6 +94,6 @@ export function FeaturedServicesSection() {
           </Link>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

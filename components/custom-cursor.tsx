@@ -6,11 +6,21 @@ export function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [isDark, setIsDark] = useState(false) // New state to track color
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
       setIsVisible(true)
+
+      // Check the element under the cursor
+      const element = document.elementFromPoint(e.clientX, e.clientY)
+      // Check if that element or its parent has the data-cursor="dark" attribute
+      if (element?.closest('[data-cursor="dark"]')) {
+        setIsDark(true)
+      } else {
+        setIsDark(false)
+      }
     }
 
     const handleMouseEnter = () => setIsHovering(true)
@@ -47,9 +57,12 @@ export function CustomCursor() {
         transform: "translate(-50%, -50%)",
       }}
     >
+      {/* Conditionally apply colors based on isDark and isHovering states */}
       <div
         className={`rounded-full transition-all duration-300 ease-out ${
-          isHovering ? "w-12 h-12 bg-white/20 border border-white/30" : "w-2 h-2 bg-white"
+          isHovering
+            ? `w-12 h-12 border ${isDark ? 'bg-black/20 border-black/30' : 'bg-white/20 border-white/30'}`
+            : `w-2 h-2 ${isDark ? 'bg-black' : 'bg-white'}`
         }`}
       />
     </div>
