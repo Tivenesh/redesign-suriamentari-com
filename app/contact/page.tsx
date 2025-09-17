@@ -144,17 +144,26 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-light mb-2 text-white/80">Office Address</h3>
                   <p className="text-gray-300">
-                    No. 12, Jalan TP 7/7,
+                    No. 501 Block A,
                     <br />
-                    Sime UEP Industrial Park,
+                     Mentari Business Park,
                     <br />
-                    40400 Shah Alam, Selangor.
+                     PJS 8/5, Bandar Sunway,
+                    <br />
+                     46150 Petaling Jaya,
+                    <br />
+                    Selangor Darul Ehsan.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-light mb-2 text-white/80">Phone</h3>
-                  <p className="text-gray-300">+603-5192 8113</p>
+                  <h3 className="text-lg font-light mb-2 text-white/80">Facsimile No </h3>
+                  <p className="text-gray-300">03-5632 7708</p>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-light mb-2 text-white/80">Telephone No</h3>
+                  <p className="text-gray-300">03-5635 7708</p>
                 </div>
 
                 <div>

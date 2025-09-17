@@ -63,7 +63,8 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {services.map((service, index) => (
               <div key={index} className="group">
-                <div className="relative overflow-hidden mb-8 aspect-[4/3]">
+                {/* The `rounded-lg` class has been added here */}
+                <div className="relative overflow-hidden mb-8 aspect-[4/3] rounded-lg">
                   <img
                     src={service.image || "/placeholder.svg"}
                     alt={service.title}
