@@ -31,31 +31,36 @@ export function HeroSection() {
     }, 6000)
     return () => clearInterval(timer)
   }, [slides.length])
-  
-  // Animation container variants to stagger children's animations
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3, // Time delay between each child animating in
+        staggerChildren: 0.5, // Increased stagger
       },
     },
   }
 
-  // Animation for individual text elements to fade in and slide up
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 1, // Slower duration
         ease: "easeOut",
       },
     },
   }
 
+  const lineVariants = {
+    hidden: { scaleX: 0 },
+    visible: {
+      scaleX: 1,
+      transition: { duration: 1.2, ease: [0.6, 0.01, -0.05, 0.95], delay: 0.2 }, // Slower duration
+    },
+  }
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -79,6 +84,7 @@ export function HeroSection() {
           <span className="text-sm font-medium tracking-[0.3em] text-white/80 uppercase">
             {slides[currentSlide].subtitle}
           </span>
+          <motion.div className="w-16 h-px bg-white/50 mx-auto mt-4" variants={lineVariants} />
         </motion.div>
 
         <motion.h1

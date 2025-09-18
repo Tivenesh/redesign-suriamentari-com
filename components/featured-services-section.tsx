@@ -42,7 +42,7 @@ export function FeaturedServicesSection() {
   }
 
   return (
-    <motion.section 
+    <motion.section
       className="py-32 px-6 bg-gray-900/30"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -57,7 +57,7 @@ export function FeaturedServicesSection() {
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -66,7 +66,7 @@ export function FeaturedServicesSection() {
         >
           {services.map((service, index) => (
             <motion.div key={index} className="group cursor-pointer" variants={itemVariants}>
-              <div className="relative overflow-hidden mb-6 aspect-square">
+              <div className="relative overflow-hidden mb-6 aspect-square rounded-lg">
                 <img
                   src={service.image || "/placeholder.svg"}
                   alt={service.title}

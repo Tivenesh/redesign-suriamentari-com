@@ -1,3 +1,4 @@
+import { AnimatedHeroText } from "@/components/animated-hero-text"
 import { EnhancedNavigation } from "@/components/enhanced-navigation"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
@@ -35,7 +36,7 @@ export default function ClientsPage() {
       image: "/modern-office-cleaning-team.png",
     },
   ]
-  
+
   // Updated array with your new logo filenames
   const trustedClients = [
     { name: "Trio Tech", logo: "/triotech.png" },
@@ -60,12 +61,7 @@ export default function ClientsPage() {
           </video>
           <div className="absolute inset-0 bg-black/60" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <span className="text-sm font-medium tracking-[0.3em] text-white/80 uppercase mb-8 block">CLIENTS</span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-[0.9] text-balance">
-            Who We Work With
-          </h1>
-        </div>
+        <AnimatedHeroText subtitle="CLIENTS" title="Who We Work With" />
       </section>
 
       {/* Clients Grid */}
