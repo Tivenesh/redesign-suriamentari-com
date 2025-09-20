@@ -6,33 +6,33 @@ import Image from "next/image"
 export default function ClientsPage() {
   const clients = [
     {
-      title: "Corporate Client A",
-      category: "Commercial Office Complex",
-      image: "/modern-glass-office.png",
+      title: "Air Asia Academy",
+      category: "Education & Training",
+      image: "/airasia-academy.png",
     },
     {
-      title: "Residential Project B",
-      category: "Luxury Residential Tower",
+      title: "Residential Project",
+      category: "Residential & Property Management",
       image: "/luxury-residential-tower.jpg",
     },
     {
-      title: "Public Sector Partner C",
-      category: "Government Facility",
-      image: "/modern-office-interior-with-plants.jpg",
+      title: "Greif",
+      category: "Industrial & Manufacturing",
+      image: "/Greif.png",
     },
     {
-      title: "Healthcare Facility D",
-      category: "Medical Center",
-      image: "/quality-control-certification-badges.jpg",
+      title: "Globetronics Technology bhd",
+      category: "Technology & Electronics",
+      image: "/GTB.png",
     },
     {
-      title: "Educational Institution E",
-      category: "University Campus",
-      image: "/modern-office-with-people-in-business-attire--prof.jpg",
+      title: "Lafarge",
+      category: "Construction & Building Materials",
+      image: "/Lafarge.png",
     },
     {
-      title: "Retail Complex F",
-      category: "Shopping Center",
+      title: "Mitsui Outlet Park KLIA",
+      category: "Retail & Commercial Spacesyy",
       image: "/modern-office-cleaning-team.png",
     },
   ]
