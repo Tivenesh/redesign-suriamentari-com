@@ -19,7 +19,7 @@ export function FeaturedServicesSection() {
     {
       title: "Carpet Care",
       description: "Specialized carpet cleaning and maintenance services using advanced technology.",
-      image: "/quality-control-certification-badges.jpg",
+      image: "/carpet-care.jpg",
     },
     {
       title: "Trans Care Services",

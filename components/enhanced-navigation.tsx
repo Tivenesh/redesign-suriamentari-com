@@ -17,12 +17,12 @@ export function EnhancedNavigation() {
     {
       name: "Home",
       href: "/",
-      preview: "/modern-office-with-people-in-business-attire--prof.jpg",
+      preview: "/home-menu.jpg",
     },
     {
       name: "Services",
       href: "/services",
-      preview: "/quality-control-certification-badges.jpg",
+      preview: "/carpet-care.jpg",
     },
     {
       name: "Clients",
@@ -37,7 +37,7 @@ export function EnhancedNavigation() {
     {
       name: "Contact",
       href: "/contact",
-      preview: "/modern-office-interior-with-plants.jpg",
+      preview: "/contact-menu.jpg",
     },
   ]
 
@@ -75,9 +75,8 @@ export function EnhancedNavigation() {
     <>
       {/* Main Navigation */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-black/90 backdrop-blur-sm shadow-lg" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-sm shadow-lg" : "bg-transparent"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
@@ -92,14 +91,12 @@ export function EnhancedNavigation() {
               className="relative w-8 h-8 flex flex-col justify-center items-center group"
             >
               <span
-                className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-                  isOpen ? "rotate-45 translate-y-0.5" : ""
-                }`}
+                className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-0.5" : ""
+                  }`}
               />
               <span
-                className={`w-6 h-0.5 bg-white transition-all duration-300 mt-1 ${
-                  isOpen ? "-rotate-45 -translate-y-0.5" : ""
-                }`}
+                className={`w-6 h-0.5 bg-white transition-all duration-300 mt-1 ${isOpen ? "-rotate-45 -translate-y-0.5" : ""
+                  }`}
               />
             </button>
           </div>
@@ -164,9 +161,8 @@ export function EnhancedNavigation() {
             {menuItems.map((item) => (
               <div
                 key={item.name}
-                className={`absolute inset-0 transition-opacity duration-500 ${
-                  hoveredItem === item.name ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-500 ${hoveredItem === item.name ? "opacity-100" : "opacity-0"
+                  }`}
               >
                 <img src={item.preview || "/placeholder.svg"} alt={item.name} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/20" />

@@ -7,13 +7,13 @@ export default function ServicesPage() {
     {
       title: "Carpet Care",
       description: "Specialized carpet cleaning and maintenance services using advanced technology.",
-      image: "/quality-control-certification-badges.jpg",
+      image: "/carpet-care.jpg",
     },
     {
       title: "Waste Disposal",
       description:
         "Efficient and environmentally-friendly waste management solutions for commercial and residential properties.",
-      image: "/modern-office-cleaning-team.png",
+      image: "/waste-disposal.jpg",
     },
     {
       title: "Build Care Services",
@@ -28,12 +28,12 @@ export default function ServicesPage() {
     {
       title: "Trans Care Services",
       description: "Professional transportation maintenance and cleaning services for vehicles and logistics.",
-      image: "/luxury-residential-tower.jpg",
+      image: "/Trans-care-service.jpg",
     },
     {
       title: "Home Care Services",
       description: "Comprehensive residential cleaning and maintenance solutions for modern homes.",
-      image: "/modern-office-with-people-in-business-attire--prof.jpg",
+      image: "/modern-office-cleaning-team.png",
     },
   ]
 
